@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    min-height: 100vh;
+    /* background-color: rgb(87, 232, 80); */
+}
+
+.main {
+    height: 450px;
+    border: 3px solid rgb(87, 232, 80);
+    border-radius: 25px;
+    /* background-color: red; */
+}
+
+.left {
+    /* background-image: url('./img/bg102.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block; */
+    height: 100%;
+}
+
+.right {
+    /* background-image: url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"); */
+    /* background-image: url('./img/bg101.jpeg'); */
+    background-image: url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: block;
+}
+
+.form {
+    background-color: white;
+    height: 100%;
+    /* background-color: rgb(87, 232, 80); */
+    /* border: 2px solid white; */
+}
+
+.label {
+    font-size: small;
+}
+
+
+/* Tab */
+@media only screen and (max-width: 989px) {
+    .right {
+        display: none;
+    }
+}

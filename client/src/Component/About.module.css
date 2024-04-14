@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.brandbox {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(87, 232, 80);
+}
+
+.smalltext {
+    font-size: 13px;
+}
+
+.bggreen {
+    background-color: rgb(87, 232, 80);
+}
+
+@media (max-width:940px) {}
