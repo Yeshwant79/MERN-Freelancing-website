@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "./Service.module.css"
 import Nav from './Nav'
 import img1 from './img/forSupport.jpg'
 import Footer from './Footer';
 import { toast } from 'react-toastify';
-import { AuthProvider } from '../store/auth';
 
 const Services = () => {
 
-    const { authorizationToken } = useContext(AuthProvider)
 
     const data = [
         { id: "1", name: "Development & IT", points: "4.85/5", likes: "1853 skills" },
@@ -24,11 +22,7 @@ const Services = () => {
 
     const getData = async () => {
         try {
-            const data = await fetch('http://localhost:5000/api/data/service', {
-                headers: {
-                    authorization: authorizationToken
-                }
-            })
+            const data = await fetch('http://localhost:5000/api/data/service')
             const res = await data.json()
             setItem(res)
             // console.log(res)
