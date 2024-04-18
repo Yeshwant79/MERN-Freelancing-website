@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import { AuthContext } from '../store/auth'
 
 const AdminContacts = () => {
     const [item, setItem] = useState([])
@@ -8,9 +9,15 @@ const AdminContacts = () => {
     const [email, setEmail] = useState()
     const [message, setMessage] = useState()
 
+    const { authorizationToken } = useContext(AuthContext)
+
     const getData = async (req, res) => {
         try {
-            const data = await fetch('http://localhost:5000/api/admin/contact')
+            const data = await fetch('http://localhost:5000/api/admin/contact', {
+                headers: {
+                    authorization: authorizationToken
+                }
+            })
             const res = await data.json()
             setItem(res)
             // console.log(res)

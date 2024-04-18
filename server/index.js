@@ -19,7 +19,7 @@ require("./utils/db")
 const router = require('./router/auth-router')
 const contactRouter = require('./router/contact-router')
 const serviceRouter = require('./router/service-router')
-const adminRouter = require('./router/admin-router')
+const adminRouter = require('./router/admin-router');
 app.use('/api/auth', router)
 app.use('/api', contactRouter)
 app.use('/api/data', serviceRouter)

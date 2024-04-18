@@ -1,8 +1,20 @@
-import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink, Navigate, Outlet } from 'react-router-dom'
 import style from "./Admin.module.css"
+import { AuthContext } from '../store/auth'
 
 const AdminPage = () => {
+
+    const { user, isLoading } = useContext(AuthContext)
+    console.log('Admin Page', user)
+
+    if (isLoading) {
+        return <h1>Loading ...</h1>
+    }
+    if (!user.isAdmin) {
+        return <Navigate to="/" />
+    }
+
     return (
         <>
             <div className={`container-fluid`}>

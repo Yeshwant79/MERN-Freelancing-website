@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import { AuthContext } from '../store/auth'
 // import style from "./AdminDeleteServices.module.css"
 
 
 const AdminDeleteServices = () => {
     const [item, setItem] = useState([])
     const [id, setId] = useState("")
+
+    const { authorizationToken } = useContext(AuthContext)
 
     const getData = async (req, res) => {
         try {
@@ -28,7 +31,12 @@ const AdminDeleteServices = () => {
 
     const deleteData = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/admin/services/delete/${id}`, { method: "DELETE" })
+            const response = await fetch(`http://localhost:5000/api/admin/services/delete/${id}`, {
+                headers: {
+                    authorization: authorizationToken
+                },
+                method: "DELETE"
+            })
             const res = await response.json()
             console.log(res)
             // alert("data deleted")

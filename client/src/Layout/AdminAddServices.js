@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
+import { AuthContext } from '../store/auth'
 
 const AdminAddServices = () => {
 
@@ -7,6 +8,8 @@ const AdminAddServices = () => {
     const [description, setDescription] = useState("")
     const [uploadFile, setUploadFile] = useState([])
     const photo = useRef("")
+
+    const { authorizationToken } = useContext(AuthContext)
 
     const addService = async (e) => {
         e.preventDefault()
@@ -17,6 +20,9 @@ const AdminAddServices = () => {
         data.append('uploadFile', uploadFile)
         try {
             const dataToAdd = await fetch('http://localhost:5000/api/admin/services/post', {
+                headers: {
+                    authorization: authorizationToken
+                },
                 method: 'POST',
                 body: data
             })
