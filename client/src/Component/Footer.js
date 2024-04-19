@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import style from './Footer.module.css'
 import { Link } from 'react-scroll'
 import { Link as RouterLink, NavLink } from 'react-router-dom'
+import { AuthContext } from '../store/auth'
 const Footer = () => {
 
     const FooterLinks = [
-        { id: "1", to: "/services", title: "Service" },
-        { id: "2", to: "/contact", title: "Contact" },
-        { id: "3", to: "/registration", title: "Registration" },
-        { id: "4", to: "/login", title: "Login" },
+        { id: "1", to: "/contact", title: "Contact" },
+        { id: "2", to: "/registration", title: "Registration" },
+        { id: "3", to: "/login", title: "Login" },
     ]
+
+    const { isLoggedIn, LogoutUser } = useContext(AuthContext)
 
     return (
         <>
@@ -43,6 +45,9 @@ const Footer = () => {
                                         <RouterLink to='/' className='text-dark'>About</RouterLink>
                                     </Link>
                                 </li>
+                                {
+                                    isLoggedIn ? <li><NavLink to="/services" className='text-dark'>Services</NavLink></li> : ""
+                                }
                                 {
                                     FooterLinks.map((value) => {
                                         return <li key={value.id}>

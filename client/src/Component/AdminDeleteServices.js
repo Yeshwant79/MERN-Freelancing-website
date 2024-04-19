@@ -12,7 +12,11 @@ const AdminDeleteServices = () => {
 
     const getData = async (req, res) => {
         try {
-            const data = await fetch('http://localhost:5000/api/data/service')
+            const data = await fetch('http://localhost:5000/api/data/service', {
+                headers: {
+                    authorization: authorizationToken
+                }
+            })
             const res = await data.json()
             setItem(res)
         } catch (error) {

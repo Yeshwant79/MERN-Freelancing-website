@@ -17,7 +17,7 @@ const AdminAddServices = () => {
         const data = new FormData()
         data.append('service_name', service_name)
         data.append('description', description)
-        data.append('uploadFile', uploadFile)
+        data.append('uploadFile', photo.current.files[0])
         try {
             const dataToAdd = await fetch('http://localhost:5000/api/admin/services/post', {
                 headers: {
@@ -33,8 +33,7 @@ const AdminAddServices = () => {
             setDescription("")
 
             // ---- we use this for make impty the input file field
-            // photo.current.value = ""
-            photo.current.value = ("")
+            setUploadFile("")
 
         } catch (error) {
             console.log(error)
@@ -54,7 +53,7 @@ const AdminAddServices = () => {
                 </div>
                 <div className="mb-3 p-0 form-check">
                     <label htmlFor="image" className="form-label">Image</label>
-                    <input type="file" className="form-control" id="image" ref={photo} onChange={(e) => setUploadFile(e.target.files[0])} />
+                    <input type="file" className="form-control" id="image" ref={photo} value={uploadFile} onChange={(e) => setUploadFile(e.target.value)} />
                 </div>
                 <button type="submit" className="btn btn-primary d-flex mx-auto">Submit</button>
             </form>
