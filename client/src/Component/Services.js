@@ -5,9 +5,9 @@ import img1 from './img/forSupport.jpg'
 import Footer from './Footer';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../store/auth';
+import { Navigate } from 'react-router-dom';
 
 const Services = () => {
-
 
     const data = [
         { id: "1", name: "Development & IT", points: "4.85/5", likes: "1853 skills" },
@@ -21,7 +21,10 @@ const Services = () => {
     ]
     const [item, setItem] = useState([])
 
-    const { authorizationToken } = useContext(AuthContext)
+    const { authorizationToken, token } = useContext(AuthContext)
+
+    // console.log("Token", token)
+
 
     const getData = async () => {
         try {
@@ -32,7 +35,7 @@ const Services = () => {
             })
             const res = await data.json()
             setItem(res)
-            // console.log(res)
+            // console.log(res) 
         } catch (error) {
             console.log(error)
             // alert('Fail to get Data')
@@ -43,6 +46,10 @@ const Services = () => {
     useEffect(() => {
         getData()
     }, [])
+
+    if (!token) {
+        return <Navigate to="/" />
+    }
 
     return (
         <>

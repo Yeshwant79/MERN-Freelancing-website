@@ -18,7 +18,10 @@ const authMiddleware = async (req, res, next) => {
 
                 token = token.slice(7, token.length);
                 // res.status(200).json({ msg: "Tocken  Croped" })
-                console.log(token);
+
+
+                // To display token in console when Login
+                // console.log(token);
 
             }
 
@@ -34,7 +37,9 @@ const authMiddleware = async (req, res, next) => {
 
         } catch (error) {
             res.status(400).json({ msg: "Invalid Token" })
-            console.log(error)
+
+            // TO display error 
+            // console.log(error)
         }
 
     }

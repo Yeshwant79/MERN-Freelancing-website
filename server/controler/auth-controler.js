@@ -193,7 +193,10 @@ const getStudents = async (req, res) => {
     try {
         // This req.student is not getting from database it comes by default from request ant its name can be any thing
         const studentData = req.student
-        console.log(studentData);
+
+
+        // TO Show user data if it exist
+        // console.log(studentData);
 
         // Hear we need only data not message so we are not sending message in json
         return res.status(200).json(studentData)

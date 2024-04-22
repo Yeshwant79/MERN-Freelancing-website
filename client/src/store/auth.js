@@ -50,10 +50,10 @@ const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, authorizationToken, user, isLoading }}>
+        <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, authorizationToken, user, isLoading, token }}>
             {children}
         </AuthContext.Provider>
     )
 }
 
-export { AuthContext, AuthProvider } 
+export { AuthContext, AuthProvider }  
